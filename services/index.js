@@ -132,3 +132,16 @@ export const getCategories = async () => {
 
   return result.categories;
 };
+
+// Šalje zahtev backendu (folder 'api') odakle šalje dalje graphqlcmsu
+export const submitComment = async (obj) => {
+  const result = await fetch("api/comments", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(obj),
+  });
+
+  return result.json();
+};
