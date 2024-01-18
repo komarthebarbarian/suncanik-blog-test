@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 const FeaturedPostCard = ({ post }) => (
-  <div className="relative h-72">
+  <div className="relative h-72 ">
     <div
       className="absolute rounded-lg bg-center bg-no-repeat bg-cover shadow-md inline-block w-full h-72"
       style={{ backgroundImage: `url('${post.featuredImage.url}')` }}
@@ -14,7 +14,7 @@ const FeaturedPostCard = ({ post }) => (
       <p className="text-white mb-4 text-shadow font-semibold text-xs">
         {moment(post.createdAt).format("DD. MM. YYYY.")}
       </p>
-      <p className="text-white mb-4 text-shadow font-semibold text-2xl text-center">
+      <p className="text-white mb-4 text-shadow font-semibold text-2xl text-center ">
         {post.title}
       </p>
       <div className="flex items-center absolute bottom-5 w-full justify-center">
@@ -26,7 +26,7 @@ const FeaturedPostCard = ({ post }) => (
           className="align-middle drop-shadow-lg rounded-full"
           src={post.author.photo.url}
         />
-        <p className="inline align-middle text-white text-shadow ml-2 font-medium">
+        <p className="inline align-middle text-white text-shadow ml-2 font-medium ">
           {post.author.name}
         </p>
       </div>
