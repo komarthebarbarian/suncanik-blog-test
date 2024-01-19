@@ -30,7 +30,8 @@ const FeaturedPosts = () => {
 
   useEffect(() => {
     getFeaturedPosts().then((result) => {
-      setFeaturedPosts(result);
+      let reversedFeaturedPosts = result.slice().reverse();
+      setFeaturedPosts(reversedFeaturedPosts);
       setDataLoaded(true);
     });
   }, []);
@@ -81,6 +82,8 @@ const FeaturedPosts = () => {
         // customRightArrow={customRightArrow}
         responsive={responsive}
         itemClass="px-4"
+        autoPlay
+        autoPlaySpeed={3000}
       >
         {dataLoaded &&
           featuredPosts.map((post, index) => (
