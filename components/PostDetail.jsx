@@ -71,8 +71,10 @@ const PostDetail = ({ post }) => {
           />
         </div>
         <div className="px-4 lg:px-0">
-          <div className="flex justify-end md:justify-between items-center mb-8 w-full">
-            <div className="hidden md:flex items-center justify-center lg:mb-0 lg:w-auto mr-8 items-center">
+          {/* DETAILS PART */}
+          <div className="md:flex md:justify-between mb-8 w-full">
+            {/* AUTHOR PART */}
+            <div className="hidden md:flex items-center justify-center lg:mb-0 lg:w-auto mr-8 ">
               <img
                 alt={post.author.name}
                 height="30px"
@@ -84,7 +86,9 @@ const PostDetail = ({ post }) => {
                 {post.author.name}
               </p>
             </div>
-            <div className="flex justify-between md:justify-center items-center">
+            {/* DATE AND SOCIAL PART */}
+            <div className="flex justify-between items-center md:justify-end">
+              {/* DATE PART */}
               <div className="font-medium text-gray-700">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -104,13 +108,14 @@ const PostDetail = ({ post }) => {
                   {moment(post.createdAt).format("DD. MM. YYYY.")}
                 </span>
               </div>
-
+              {/* SOCIAL PART */}
               <SocialShareButtons
                 url={`https://suncanik-blog-test.vercel.app/post/${post.slug}`}
                 title={post.title}
               />
             </div>
           </div>
+          {/* DETAILS PART END */}
           <h1 className="mb-8 text-3xl font-semibold">{post.title}</h1>
           {/* Функција која омогућује да у објави буде више варијанти текста, слике и гифови */}
           {post.content.raw.children.map((typeObj, index) => {

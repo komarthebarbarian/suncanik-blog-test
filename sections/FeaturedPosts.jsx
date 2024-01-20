@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-
+import Image from "next/image";
 import { FeaturedPostCard } from "../components";
 import { getFeaturedPosts } from "../services";
 
@@ -36,50 +36,19 @@ const FeaturedPosts = () => {
     });
   }, []);
 
-  const customLeftArrow = (
-    <div className="absolute left-0 arrow-btn text-center py-3 cursor-pointer bg-pink-600 rounded-full">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        className="h-6 w-6 text-white w-full"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="2"
-          d="M10 19l-7-7m0 0l7-7m-7 7h18"
-        />
-      </svg>
-    </div>
-  );
-
-  const customRightArrow = (
-    <div className="absolute right-0 arrow-btn text-center py-3 cursor-pointer bg-pink-600 rounded-full">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        className="h-6 w-6 text-white w-full"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="2"
-          d="M14 5l7 7m0 0l-7 7m7-7H3"
-        />
-      </svg>
-    </div>
-  );
-
-  return (
+  return !dataLoaded ? (
+    <Image
+      unoptimized
+      alt="suncanik"
+      height="440"
+      width="440"
+      className="mx-auto mb-8 align-middle "
+      src="sundial.jpg"
+    ></Image>
+  ) : (
     <div className="mb-8">
       <Carousel
         infinite
-        // customLeftArrow={customLeftArrow}
-        // customRightArrow={customRightArrow}
         responsive={responsive}
         itemClass="px-4"
         autoPlay
