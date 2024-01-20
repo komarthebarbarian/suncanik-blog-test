@@ -15,7 +15,7 @@ const SearchPage = ({ searchResults }) => {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
         <div className="col-span-1 lg:col-span-8">
           <h1 className="text-2xl text-white font-semibold mb-4">
-            Резултат претраге за "{router.query.q}"
+            Резултат претраге за &ldquo;{router.query.q}&rdquo;
           </h1>
           {searchResults.map((post) => (
             <PostCard key={post.node.slug} post={post.node} />
