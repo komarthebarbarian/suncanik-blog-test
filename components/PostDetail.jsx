@@ -67,7 +67,7 @@ const PostDetail = ({ post }) => {
           <img
             src={post.featuredImage.url}
             alt=""
-            className="object-top h-full w-full object-cover  shadow-lg rounded-t-lg lg:rounded-lg"
+            className="object-top h-full w-full object-cover shadow-lg rounded-t-lg lg:rounded-lg"
           />
         </div>
         <div className="px-4 lg:px-0">
@@ -84,7 +84,7 @@ const PostDetail = ({ post }) => {
                 {post.author.name}
               </p>
             </div>
-            <div className="flex items-center">
+            <div className="flex justify-between md:justify-center items-center">
               <div className="font-medium text-gray-700">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

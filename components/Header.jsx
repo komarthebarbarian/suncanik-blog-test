@@ -10,7 +10,7 @@ const categories = [
   { name: "Црква", slug: "crkva" },
 ];
 
-const Header = () => {
+const Header = ({ posts }) => {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
@@ -27,7 +27,7 @@ const Header = () => {
           </Link>
         </div>
         <div className="flex items-center">
-          <Search />
+          <Search posts={posts} />
           <div className="hidden md:float-left md:contents">
             {categories.map((category) => (
               <Link key={category.slug} href={`/category/${category.slug}`}>
