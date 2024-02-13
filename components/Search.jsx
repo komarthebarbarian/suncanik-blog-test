@@ -55,7 +55,7 @@ const Search = ({ posts }) => {
           onChange={handleSearchChange}
           className={`${
             expanded ? "w-36 md:w-60 px-2" : "w-0"
-          } transition-all duration-300 linear outline-blue-100 rounded-full`}
+          } transition-all duration-300 linear outline-gray-100 rounded-full`}
         />
         <button
           type="submit"
@@ -68,7 +68,7 @@ const Search = ({ posts }) => {
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="w-6 h-6 text-white"
+            className="w-6 h-6 text-gray-500"
           >
             <path
               strokeLinecap="round"

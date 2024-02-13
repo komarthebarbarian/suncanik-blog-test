@@ -39,11 +39,11 @@ const FeaturedPosts = () => {
   return !dataLoaded ? (
     <Image
       unoptimized
-      alt="suncanik"
-      height="440"
-      width="440"
+      alt="Suncanik logo"
+      height="290"
+      width="290"
       className="mx-auto mb-8 align-middle "
-      src="sundial.jpg"
+      src="logo.png"
     ></Image>
   ) : (
     <div className="mb-8">

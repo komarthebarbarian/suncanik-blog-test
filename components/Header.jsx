@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { getCategories } from "../services";
 import { Search } from "../components";
+import Image from "next/image";
 
 import Link from "next/link";
 
 const categories = [
-  { name: "Православље", slug: "pravoslavlje" },
-  { name: "Духовност", slug: "duhovnost" },
-  { name: "Црква", slug: "crkva" },
+  { name: "Култура и образовање", slug: "kultura-obrazovanje" },
+  { name: "Друштво", slug: "drustvo" },
+  { name: "Вера", slug: "vera" },
+  { name: "Колумне", slug: "kolumne" },
+  { name: "Поглед у виртуелно", slug: "virtuelno" },
 ];
 
 const Header = ({ posts }) => {
@@ -18,10 +21,17 @@ const Header = ({ posts }) => {
   }, []);
   return (
     <div className="container mx-auto px-10 mb-8">
-      <div className="flex justify-between items-center border-b w-full inline-block border-blue-400 py-8">
-        <div className="md:float-left block">
-          <Link href="/">
-            <span className="cursor-pointer font-bold text-xl text-white">
+      <div className="flex justify-between items-center border-b w-full inline-block border-gray-400 py-8">
+        <div className="md:float-left block cursor-pointer">
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/logo.png"
+              alt="Suncanik blog logo icon"
+              unoptimized
+              height="50"
+              width="50"
+            ></Image>
+            <span className="font-bold uppercase text-3xl text-gray-500 antialiased drop-shadow ml-4 hidden lg:block">
               Сунчаник
             </span>
           </Link>
@@ -31,7 +41,7 @@ const Header = ({ posts }) => {
           <div className="hidden md:float-left md:contents">
             {categories.map((category) => (
               <Link key={category.slug} href={`/category/${category.slug}`}>
-                <span className="md:float-right align-middle text-white ml-4 font-semibold cursor-pointer">
+                <span className="md:float-right align-middle text-gray-500 antialiased ml-4 font-semibold cursor-pointer">
                   {category.name}
                 </span>
               </Link>
@@ -44,7 +54,7 @@ const Header = ({ posts }) => {
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="currentColor"
-              className="w-6 h-6 text-white ml-3"
+              className="w-6 h-6 text-gray-500 antialiased ml-3"
             >
               <path
                 strokeLinecap="round"
