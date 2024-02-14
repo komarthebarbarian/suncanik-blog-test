@@ -13,7 +13,7 @@ const PostCard = ({ post }) => {
             className="object-top absolute h-80 w-full object-cover shadow-lg rounded-t-lg lg:rounded-lg"
           />
         </div>
-        <h1 className="transition duration-700 text-center mb-8 cursor-pointer hover:text-pink-600 text-3xl font-semibold">
+        <h1 className="transition duration-700 text-center mb-8 cursor-pointer hover:text-spring-wood-950 text-3xl font-semibold">
           {post.title}
         </h1>
         <div className="block lg:flex text-center items-center justify-center mb-8 w-full">
@@ -29,10 +29,10 @@ const PostCard = ({ post }) => {
               {post.author.name}
             </p>
           </div>
-          <div className="font-medium text-gray-700">
+          <div className="flex items-center font-medium text-gray-700">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6 inline mr-2 text-indigo-500"
+              className="h-6 w-6 inline mr-2 text-spring-wood-950"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -51,7 +51,7 @@ const PostCard = ({ post }) => {
           {post.excerpt}
         </p>
         <div className="text-center">
-          <span className="transition duration-500 transform hover:-translate-y-1 inline-block bg-pink-400 text-lg font-medium rounded-full text-white px-8 py-3 cursor-pointer">
+          <span className="transition duration-500 transform hover:-translate-y-1 inline-block bg-spring-wood-700 text-lg font-medium rounded-full text-white px-8 py-3 cursor-pointer">
             Прочитај
           </span>
         </div>

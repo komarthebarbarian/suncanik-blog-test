@@ -25,6 +25,7 @@ const Header = ({ posts }) => {
         <div className="md:float-left block cursor-pointer">
           <Link href="/" className="flex items-center">
             <Image
+              className="rounded-full"
               src="/logo.png"
               alt="Suncanik blog logo icon"
               unoptimized
