@@ -15,6 +15,7 @@ const categories = [
 
 const Header = ({ posts }) => {
   const [categories, setCategories] = useState([]);
+  const [navOpen, setNavbarOpen] = useState(false);
 
   useEffect(() => {
     getCategories().then((newCategories) => setCategories(newCategories));
@@ -32,23 +33,57 @@ const Header = ({ posts }) => {
               height="50"
               width="50"
             ></Image>
-            <span className="font-bold uppercase text-3xl text-gray-500 antialiased drop-shadow ml-4 hidden lg:block">
+            <span className="font-bold uppercase text-xl m:text-3xl text-gray-500 antialiased drop-shadow ml-4 ">
               Сунчаник
             </span>
           </Link>
         </div>
         <div className="flex items-center">
           <Search posts={posts} />
+          {/* DESKTOP NAV */}
           <div className="hidden md:float-left md:contents">
             {categories.map((category) => (
               <Link key={category.slug} href={`/category/${category.slug}`}>
-                <span className="md:float-right align-middle text-gray-500 antialiased ml-4 font-semibold cursor-pointer">
+                <span className="transition duration-300 md:float-right align-middle text-gray-500 hover:text-spring-wood-800 antialiased mx-4 font-semibold cursor-pointer">
                   {category.name}
                 </span>
               </Link>
             ))}
+            <Link key="about" href={`/about`}>
+              <span className="transition duration-300 md:float-right align-middle text-gray-500 hover:text-spring-wood-800 antialiased mx-4 font-semibold cursor-pointer">
+                О нама
+              </span>
+            </Link>
           </div>
-          <div className="md:hidden">
+          {/* MOBILE NAV */}
+          <div
+            className={`flex flex-col md:hidden ${
+              navOpen ? "block" : "hidden"
+            }`}
+          >
+            <button
+              className={` ${navOpen ? "block" : "hidden"}`}
+              onClick={() => setNavbarOpen(!navOpen)}
+            >
+              X
+            </button>
+            {categories.map((category) => (
+              <Link key={category.slug} href={`/category/${category.slug}`}>
+                <span className="transition duration-300 md:float-right align-middle text-gray-500 hover:text-spring-wood-800 antialiased mx-4 font-semibold cursor-pointer">
+                  {category.name}
+                </span>
+              </Link>
+            ))}
+            <Link key="about" href={`/about`}>
+              <span className="transition duration-300 md:float-right align-middle text-gray-500 hover:text-spring-wood-800 antialiased mx-4 font-semibold cursor-pointer">
+                О нама
+              </span>
+            </Link>
+          </div>
+          <button
+            className={` ${navOpen ? "hidden" : "block"} md:hidden`}
+            onClick={() => setNavbarOpen(!navOpen)}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -63,7 +98,7 @@ const Header = ({ posts }) => {
                 d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
               />
             </svg>
-          </div>
+          </button>
         </div>
       </div>
     </div>
