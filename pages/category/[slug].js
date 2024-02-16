@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import { useState, useEffect } from "react";
 import { getCategories, getCategoryPost } from "../../services";
 import { PostCard, Categories, Loader } from "../../components";
 
@@ -55,6 +54,7 @@ const CategoryPost = ({ posts }) => {
     </div>
   );
 };
+
 export default CategoryPost;
 
 // Fetch data at build time
