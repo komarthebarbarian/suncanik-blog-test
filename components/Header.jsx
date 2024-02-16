@@ -39,7 +39,9 @@ const Header = ({ posts }) => {
           </Link>
         </div>
         <div className="flex items-center">
-          <Search posts={posts} />
+          <div className={`${!navOpen ? "block" : "hidden"}`}>
+            <Search posts={posts} />
+          </div>
           {/* DESKTOP NAV */}
           <div className="hidden flex justify-center items-center md:float-left md:contents">
             {categories.map((category) => (
@@ -57,31 +59,48 @@ const Header = ({ posts }) => {
           </div>
           {/* MOBILE NAV */}
           <div
-            className={`absolute top-0 right-0 w-3/4 h-96  bg-spring-wood-950 bg-opacity-40 flex flex-col items-center justify-center md:hidden ${
+            className={`absolute top-0 right-0 w-3/4  bg-spring-wood-800 bg-opacity-90 flex flex-col justify-center items-center md:hidden ${
               navOpen ? "block" : "hidden"
             }`}
             style={{ zIndex: 9999 }}
           >
             <button
-              className={` ${navOpen ? "block" : "hidden"}`}
+              className={` ${
+                navOpen ? "block" : "hidden"
+              } mt-11 border rounded-full p-1`}
               onClick={() => setNavbarOpen(!navOpen)}
             >
-              X
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-6 h-6 align-middle text-white antialiased "
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M6 18 18 6M6 6l12 12"
+                />
+              </svg>
             </button>
-            <div className="flex flex-col items-center justify-center">
-              {categories.map((category) => (
-                <Link key={category.slug} href={`/category/${category.slug}`}>
-                  <span className="transition duration-300 align-middle text-gray-500 hover:text-spring-wood-800 antialiased font-semibold cursor-pointer p">
-                    {category.name}
-                  </span>
-                </Link>
-              ))}
-              <Link key="about" href={`/about`}>
-                <span className="transition duration-300 align-middle text-gray-500 hover:text-spring-wood-800 antialiased font-semibold cursor-pointer">
-                  О нама
+            {categories.map((category) => (
+              <Link
+                key={category.slug}
+                href={`/category/${category.slug} `}
+                className="mt-6"
+              >
+                <span className="align-middle text-white antialiased font-semibold uppercase cursor-pointer">
+                  {category.name}
                 </span>
               </Link>
-            </div>
+            ))}
+            <Link key="about" href={`/about`} className="mt-6 mb-11">
+              <span className="align-middle text-white antialiased font-semibold uppercase cursor-pointer">
+                О нама
+              </span>
+            </Link>
           </div>
           <button
             className={` ${navOpen ? "hidden" : "block"} md:hidden`}

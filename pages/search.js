@@ -14,7 +14,7 @@ const SearchPage = ({ searchResults }) => {
     <div className="container mx-auto px-10 mb-8">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
         <div className="col-span-1 lg:col-span-8">
-          <h2 className="text-2xl text-gray-500 font-semibold mb-4">
+          <h2 className="text-3xl text-gray-500 font-semibold mb-8">
             Резултат претраге за &ldquo;{router.query.q}&rdquo;
           </h2>
           {searchResults.map((post) => (
