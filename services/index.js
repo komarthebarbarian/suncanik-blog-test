@@ -40,18 +40,26 @@ export const getPosts = async () => {
 };
 
 export const getCategories = async () => {
-  const query = gql`
-    query GetGategories {
-      categories {
-        name
-        slug
+  try {
+    const query = gql`
+      query GetCategories {
+        categories {
+          name
+          slug
+        }
       }
-    }
-  `;
+    `;
 
-  const result = await request(graphqlAPI, query);
+    const result = await request(graphqlAPI, query);
+    
+    // Ensure that result.categories is an array
+    const categories = result.categories || [];
 
-  return result.categories;
+    return categories;
+  } catch (error) {
+    console.error("Error fetching categories:", error);
+    return [];
+  }
 };
 
 export const getPostDetails = async (slug) => {
