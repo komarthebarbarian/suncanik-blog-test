@@ -7,7 +7,9 @@ const CategoryPost = ({ posts, categoryName }) => {
 
   return (
     <div className="container mx-auto px-10 mb-8">
-      <h1>{categoryName}</h1>
+      <h2 className="text-2xl text-gray-500 font-semibold mb-8 pb-8 text-center border-b border-gray-400">
+        {categoryName}
+      </h2>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
         <div className="col-span-1 lg:col-span-8">
@@ -35,7 +37,7 @@ export async function getServerSideProps({ params }) {
     const category = categories.find(
       (category) => category.slug === params.slug
     );
-    const categoryName = category?.name || "Unknown Category";
+    const categoryName = category?.name || "Сунчаник блог";
 
     return {
       props: { posts, categoryName },
@@ -46,7 +48,7 @@ export async function getServerSideProps({ params }) {
     return {
       props: {
         posts: [],
-        categoryName: "Unknown Category",
+        categoryName: "Сунчаник блог",
       },
     };
   }
