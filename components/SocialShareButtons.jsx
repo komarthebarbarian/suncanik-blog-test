@@ -1,7 +1,10 @@
 import React from "react";
 import Image from "next/image";
+import { useState } from "react";
 
 const SocialShareButtons = ({ url, title }) => {
+  const [linkClicked, setLinkClicked] = useState(false);
+
   const handleEmailShare = () => {
     const subject = encodeURIComponent("Check out this link");
     const body = encodeURIComponent(`Сунчаник блог \n${url}`);
@@ -15,6 +18,11 @@ const SocialShareButtons = ({ url, title }) => {
     textField.select();
     document.execCommand("copy");
     textField.remove();
+
+    setLinkClicked(true);
+    setTimeout(() => {
+      setLinkClicked(false);
+    }, 3000);
   };
 
   const handleViberShare = () => {
@@ -93,7 +101,7 @@ const SocialShareButtons = ({ url, title }) => {
       </button>
       <button
         onClick={handleCopyLink}
-        className="transition-all linear duration-300 text-indigo-500 hover:text-indigo-700 cursor-pointer opacity-50 hover:opacity-100 "
+        className="relative transition-all linear duration-300 text-indigo-500 hover:text-indigo-700 cursor-pointer opacity-50 hover:opacity-100 "
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -109,6 +117,13 @@ const SocialShareButtons = ({ url, title }) => {
             d="M13.19 8.688a4.5 4.5 0 0 1 1.242 7.244l-4.5 4.5a4.5 4.5 0 0 1-6.364-6.364l1.757-1.757m13.35-.622 1.757-1.757a4.5 4.5 0 0 0-6.364-6.364l-4.5 4.5a4.5 4.5 0 0 0 1.242 7.244"
           />
         </svg>
+        <p
+          className={`absolute -left-20 top-7 text-spring-wood-800 font-semibold text-sm ${
+            linkClicked ? "block" : "hidden"
+          }`}
+        >
+          Линк је копиран
+        </p>
       </button>
     </div>
   );

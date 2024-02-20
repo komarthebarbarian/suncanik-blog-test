@@ -54,7 +54,7 @@ const Search = ({ posts }) => {
           value={searchTerm}
           onChange={handleSearchChange}
           className={`${
-            expanded ? "w-36 md:w-60 px-2 z-100" : "w-0"
+            expanded ? "w-46 md:w-60 px-2 z-100" : "w-0"
           } transition-all duration-300 linear outline-gray-100 rounded-full`}
         />
         <button

@@ -52,7 +52,7 @@ const FeaturedPosts = () => {
         responsive={responsive}
         itemClass="px-4"
         autoPlay
-        autoPlaySpeed={3000}
+        autoPlaySpeed={5000}
       >
         {dataLoaded &&
           featuredPosts.map((post, index) => (
