@@ -55,6 +55,29 @@ const PostDetail = ({ post }) => {
             src={obj.src}
           />
         );
+      case "link":
+        return (
+          <a
+            key={index}
+            href={obj.url}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {modifiedText}
+          </a>
+        );
+      case "video":
+        return (
+          <iframe
+            key={index}
+            title={obj.title}
+            width="560"
+            height="315"
+            src={obj.src}
+            frameBorder="0"
+            allowFullScreen
+          ></iframe>
+        );
       default:
         return modifiedText;
     }

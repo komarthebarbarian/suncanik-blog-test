@@ -49,11 +49,11 @@ const PostCard = ({ post }) => {
             </span>
           </div>
         </div>
-        <p className="text-center text-lg text-gray-600 font-normal px-4 lg:px-20 mb-8">
+        <p className="text-left text-lg text-gray-600 font-normal px-4 lg:px-20 mb-8">
           {post.excerpt}
         </p>
         <div className="text-center">
-          <span className="transition duration-500 transform hover:-translate-y-1 inline-block bg-spring-wood-700 text-lg font-medium rounded-full text-white px-8 py-3 cursor-pointer">
+          <span className="transition duration-500 transform hover:-translate-y-1 inline-block bg-spring-wood-900 text-lg font-medium rounded-full text-white px-8 py-3 cursor-pointer">
             Прочитај
           </span>
         </div>
