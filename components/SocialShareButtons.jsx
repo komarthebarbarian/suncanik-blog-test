@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { useState } from "react";
 
-const SocialShareButtons = ({ url, title }) => {
+const SocialShareButtons = ({ url, title, excerpt }) => {
   const [linkClicked, setLinkClicked] = useState(false);
 
   const handleEmailShare = () => {
@@ -38,7 +38,7 @@ const SocialShareButtons = ({ url, title }) => {
       <a
         href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
           url
-        )}`}
+        )}&quote=${encodeURIComponent(`${title}\n${excerpt}\n${url}`)}`}
         target="_blank"
         rel="noopener noreferrer"
         className="transition-all linear duration-300 mr-4 text-indigo-500 hover:text-indigo-700 cursor-pointer opacity-50 hover:opacity-100 "

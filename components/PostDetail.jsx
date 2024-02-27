@@ -135,6 +135,7 @@ const PostDetail = ({ post }) => {
               <SocialShareButtons
                 url={`https://suncanik.info/post/${post.slug}`}
                 title={post.title}
+                excerpt={post.excerpt}
               />
             </div>
           </div>
