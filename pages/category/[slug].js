@@ -1,4 +1,5 @@
 import React from "react";
+import { NextSeo } from "next-seo";
 import { getCategories, getCategoryPost } from "../../services";
 import { PostCard, Categories, Loader } from "../../components";
 
@@ -6,24 +7,52 @@ const CategoryPost = ({ posts, categoryName }) => {
   const reversedPosts = posts.slice().reverse();
 
   return (
-    <div className="container mx-auto px-10 mb-8">
-      <h2 className="text-2xl text-gray-500 font-semibold mb-8 pb-8 text-center border-b border-gray-400">
-        {categoryName}
-      </h2>
+    <>
+      <NextSeo
+        title={`${categoryName} | Сунчаник`}
+        description={`Најновније објаве у категорији ${categoryName}`}
+        canonical={`https://www.suncanik.info/category/${posts.slug}`}
+        openGraph={{
+          type: "website",
+          locale: "sr-Cyrl-RS",
+          url: `https://www.suncanik.info/category/${categoryName}`,
+          title: `${categoryName} | Сунчаник`,
+          description: `Најновније објаве у категорији ${categoryName}`,
+          images: [
+            {
+              url: "https://www.suncanik.info/og-category-image.jpg",
+              width: 1200,
+              height: 630,
+              alt: `Suncanik.info logo`,
+            },
+          ],
+          site_name: "Сунчаник",
+        }}
+        twitter={{
+          handle: "@Suncanik",
+          site: "@Suncanik",
+          cardType: "summary_large_image",
+        }}
+      />
+      <div className="container mx-auto px-10 mb-8">
+        <h2 className="text-2xl text-gray-500 font-semibold mb-8 pb-8 text-center border-b border-gray-400">
+          {categoryName}
+        </h2>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-        <div className="col-span-1 lg:col-span-8">
-          {reversedPosts.map((post, index) => (
-            <PostCard key={index} post={post.node} />
-          ))}
-        </div>
-        <div className="col-span-1 lg:col-span-4">
-          <div className="relative lg:sticky top-8">
-            <Categories />
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+          <div className="col-span-1 lg:col-span-8">
+            {reversedPosts.map((post, index) => (
+              <PostCard key={index} post={post.node} />
+            ))}
+          </div>
+          <div className="col-span-1 lg:col-span-4">
+            <div className="relative lg:sticky top-8">
+              <Categories />
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

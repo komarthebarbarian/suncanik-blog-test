@@ -133,7 +133,7 @@ const PostDetail = ({ post }) => {
               </div>
               {/* SOCIAL PART */}
               <SocialShareButtons
-                url={`https://suncanik-blog-test.vercel.app/post/${post.slug}`}
+                url={`https://suncanik.info/post/${post.slug}`}
                 title={post.title}
               />
             </div>

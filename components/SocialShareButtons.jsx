@@ -7,7 +7,7 @@ const SocialShareButtons = ({ url, title }) => {
 
   const handleEmailShare = () => {
     const subject = encodeURIComponent("Check out this link");
-    const body = encodeURIComponent(`Сунчаник блог \n${url}`);
+    const body = encodeURIComponent(`СУНЧАНИК ИНФО \n ${title}\n ${url}`);
     window.location.href = `mailto:?subject=${subject}&body=${body}`;
   };
 
@@ -27,7 +27,9 @@ const SocialShareButtons = ({ url, title }) => {
 
   const handleViberShare = () => {
     window.open(
-      `viber://forward?text=${encodeURIComponent(`Check this out: ${url}`)}`
+      `viber://forward?text=${encodeURIComponent(
+        `СУНЧАНИК ИНФО \n${title}: ${url}`
+      )}`
     );
   };
 
@@ -53,7 +55,9 @@ const SocialShareButtons = ({ url, title }) => {
       <a
         href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(
           url
-        )}&text=${encodeURIComponent(title)}`}
+        )}&text=${encodeURIComponent(
+          title
+        )}&hashtags=Сунчаник,Sunčanik,Suncanik`}
         target="_blank"
         rel="noopener noreferrer"
         className="transition-all linear duration-300 mr-2 text-indigo-500 hover:text-indigo-700 cursor-pointer opacity-50 hover:opacity-100 "
