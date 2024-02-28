@@ -1,22 +1,23 @@
 import React from "react";
 import moment from "moment";
 import Link from "next/link";
+import Image from "next/image";
 
 const PostCard = ({ post }) => {
   return (
     <Link className="cursor-default" href={`/post/${post.slug}`}>
       <div className="bg-white shadow-lg rounded-lg p-0 lg:p-8 pb-12 mb-8">
-        <div className="relative overflow-hidden shadow-md pb-80 mb-6">
+        <div className="overflow-hidden shadow-md mb-6">
           <img
             src={post.featuredImage.url}
             alt={post.title}
-            className="object-top absolute h-80 w-full object-cover shadow-lg rounded-t-lg lg:rounded-lg"
+            className="object-top h-full w-full object-cover shadow-lg rounded-t-lg lg:rounded-lg"
           />
         </div>
         <h1 className="transition duration-700 text-center mb-8 cursor-pointer hover:text-spring-wood-950 text-3xl font-semibold">
           {post.title}
         </h1>
-        <div className="block lg:flex text-center items-center justify-center mb-8 w-full">
+        <div className="block lg:flex text-center items-center justify-left lg:px-10 mb-8 w-full">
           <div className="flex items-center justify-center mb-4 lg:mb-0 w-full lg:w-auto mr-8">
             <img
               src={post.author.photo.url}
@@ -49,7 +50,7 @@ const PostCard = ({ post }) => {
             </span>
           </div>
         </div>
-        <p className="text-left text-lg text-gray-600 font-normal px-4 lg:px-20 mb-8">
+        <p className="text-left text-lg text-gray-600 font-normal px-4 lg:px-10 mb-8">
           {post.excerpt}
         </p>
         <div className="text-center">
