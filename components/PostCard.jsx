@@ -50,7 +50,7 @@ const PostCard = ({ post }) => {
             </span>
           </div>
         </div>
-        <p className="text-left text-lg text-gray-600 font-normal px-4 lg:px-10 mb-8">
+        <p className="text-left text-lg text-gray-700 font-normal px-4 lg:px-10 mb-8">
           {post.excerpt}
         </p>
         <div className="text-center">

@@ -6,7 +6,7 @@ const SocialShareButtons = ({ url, title, excerpt }) => {
   const [linkClicked, setLinkClicked] = useState(false);
 
   const handleEmailShare = () => {
-    const subject = encodeURIComponent("Check out this link");
+    const subject = encodeURIComponent(`${title}`);
     const body = encodeURIComponent(`СУНЧАНИК ИНФО \n ${title}\n ${url}`);
     window.location.href = `mailto:?subject=${subject}&body=${body}`;
   };

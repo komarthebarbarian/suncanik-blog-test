@@ -64,34 +64,33 @@ const Header = ({ posts }) => {
             }`}
             style={{ zIndex: 9999 }}
           >
-            <div className="relative mt-11 mb-4">
-              <Link href="/">
-                <h1 className="text-white font-bold uppercase text-3xl">
-                  Сунчаник
-                </h1>
-              </Link>
-              <button
-                className={` ${
-                  navOpen ? "block" : "hidden"
-                } border rounded-full p-1 absolute -left-16 -top-0`}
-                onClick={() => setNavbarOpen(!navOpen)}
+            <button
+              className={` ${
+                navOpen ? "block" : "hidden"
+              } border rounded-full p-1 absolute left-2 top-2`}
+              onClick={() => setNavbarOpen(!navOpen)}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-6 h-6 align-middle text-white antialiased "
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="w-6 h-6 align-middle text-white antialiased "
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M6 18 18 6M6 6l12 12"
-                  />
-                </svg>
-              </button>
-            </div>
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M6 18 18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+            <Link href="/">
+              <h1 className="text-white font-bold uppercase text-3xl mt-12 mb-3">
+                Сунчаник
+              </h1>
+            </Link>
+
             <div className="flex flex-col justify-center items-left">
               {categories.map((category) => (
                 <Link
