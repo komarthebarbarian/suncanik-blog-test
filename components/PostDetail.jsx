@@ -105,7 +105,7 @@ const PostDetail = ({ post }) => {
               />
             </div>
             {/* AUTHOR PART */}
-            <div className="flex items-center justify-start mb-2 lg:mb-2 lg:w-auto ">
+            <div className="flex items-center justify-start mb-2 lg:w-auto ">
               <img
                 alt={post.author.name}
                 height="32px"

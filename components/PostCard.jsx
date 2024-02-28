@@ -17,23 +17,23 @@ const PostCard = ({ post }) => {
         <h1 className="transition duration-700 text-center mb-8 cursor-pointer hover:text-spring-wood-950 text-3xl font-semibold">
           {post.title}
         </h1>
-        <div className="block lg:flex text-center items-center justify-left lg:px-10 mb-8 w-full">
-          <div className="flex items-center justify-center mb-4 lg:mb-0 w-full lg:w-auto mr-8">
+        <div className=" lg:px-10 mb-8 w-full">
+          <div className="flex items-center justify-start mb-4 w-full lg:w-auto mr-8">
             <img
               src={post.author.photo.url}
               alt={post.author.name}
-              height="30px"
-              width="30px"
+              height="32px"
+              width="32px"
               className="align-middle rounded-full"
             />
             <p className="inline align-middle text-gray-700 ml-2 text-lg">
               {post.author.name}
             </p>
           </div>
-          <div className="flex items-center justify-center font-medium text-gray-700">
+          <div className="flex items-center justify-start font-medium text-gray-700">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6 inline mr-2 text-spring-wood-950"
+              className="h-8 w-8 inline mr-2 text-spring-wood-950"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
