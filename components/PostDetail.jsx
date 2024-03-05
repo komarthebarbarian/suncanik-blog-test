@@ -20,6 +20,18 @@ const PostDetail = ({ post }) => {
       }
     }
 
+    if (obj.type == "link") {
+      modifiedText = (
+        <a
+          href={obj.href}
+          target="_blank"
+          className="text-indigo-900 hover:text-gray-800"
+        >
+          {obj["children"][0]["text"]}
+        </a>
+      );
+    }
+
     switch (type) {
       case "heading-three":
         return (
@@ -55,17 +67,7 @@ const PostDetail = ({ post }) => {
             src={obj.src}
           />
         );
-      case "link":
-        return (
-          <a
-            key={index}
-            href={obj.url}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {modifiedText}
-          </a>
-        );
+
       case "video":
         return (
           <iframe

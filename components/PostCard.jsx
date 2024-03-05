@@ -17,7 +17,7 @@ const PostCard = ({ post }) => {
         <h1 className="transition duration-700 text-center mb-8 cursor-pointer hover:text-spring-wood-950 text-3xl font-semibold">
           {post.title}
         </h1>
-        <div className=" lg:px-10 mb-8 w-full">
+        <div className=" lg:px-10 mb-8 w-full ml-3">
           <div className="flex items-center justify-start mb-4 w-full lg:w-auto mr-8">
             <img
               src={post.author.photo.url}
