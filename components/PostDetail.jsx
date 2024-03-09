@@ -70,15 +70,24 @@ const PostDetail = ({ post }) => {
 
       case "video":
         return (
-          <iframe
-            key={index}
-            title={obj.title}
-            width="560"
-            height="315"
-            src={obj.src}
-            frameBorder="0"
-            allowFullScreen
-          ></iframe>
+          <div
+            style={{
+              paddingTop: `${(315 / 560) * 100}%`,
+              position: "relative",
+            }}
+          >
+            <iframe
+              key={index}
+              title={obj.title}
+              width="100%"
+              height="100%"
+              src={obj.src}
+              frameBorder="0"
+              allowFullScreen
+              loading="lazy"
+              style={{ position: "absolute", top: 0, left: 0 }}
+            ></iframe>
+          </div>
         );
       default:
         return modifiedText;

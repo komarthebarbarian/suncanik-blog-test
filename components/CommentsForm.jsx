@@ -5,12 +5,17 @@ const CommentsForm = ({ slug }) => {
   const [error, setError] = useState(false);
   const [localStorage, setLocalStorage] = useState(null);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+
   const [formData, setFormData] = useState({
     name: null,
     email: null,
     comment: null,
     storeData: false,
   });
+  // Initialize characterCount after formData
+  const [characterCount, setCharacterCount] = useState(
+    formData.comment ? formData.comment.length : 0
+  );
 
   useEffect(() => {
     setLocalStorage(window.localStorage);
@@ -26,11 +31,24 @@ const CommentsForm = ({ slug }) => {
 
   const onInputChange = (e) => {
     const { target } = e;
+
     if (target.type === "checkbox") {
       setFormData((prevState) => ({
         ...prevState,
         [target.name]: target.checked,
       }));
+    } else if (target.name === "comment") {
+      let inputValue = target.value;
+
+      if (inputValue.length > 400) {
+        inputValue = inputValue.slice(0, 400);
+      }
+
+      setFormData((prevState) => ({
+        ...prevState,
+        [target.name]: inputValue,
+      }));
+      setCharacterCount(inputValue.length);
     } else {
       setFormData((prevState) => ({
         ...prevState,
@@ -42,7 +60,7 @@ const CommentsForm = ({ slug }) => {
   const handlePostSubmission = () => {
     setError(false);
     const { name, email, comment, storeData } = formData;
-    if (!name || !email || !comment) {
+    if (!name || !email || !comment || comment.length > 400) {
       setError(true);
       return;
     }
@@ -78,6 +96,7 @@ const CommentsForm = ({ slug }) => {
         }, 3000);
       }
     });
+    setCharacterCount(0);
   };
 
   return (
@@ -93,6 +112,9 @@ const CommentsForm = ({ slug }) => {
           name="comment"
           placeholder="Ваш коментар"
         />
+        {characterCount >= 0 && (
+          <p className="text-xs text-gray-500">{`${characterCount}/400 карактера`}</p>
+        )}
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
         <input
