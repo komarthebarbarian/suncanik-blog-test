@@ -66,7 +66,7 @@ export default function Home({ initialPosts }) {
               dataLength={posts.length}
               next={fetchMoreData}
               hasMore={hasMore}
-              loader={<h4>Loading...</h4>}
+              loader={<h4>Очитавам...</h4>}
             >
               {posts.map((post, index) => (
                 <PostCard post={post.node} key={post.title} />

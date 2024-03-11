@@ -27,6 +27,9 @@ module.exports = {
           900: "#B18E57",
           950: "#A1804B",
         },
+        "sticky-color": {
+          DEFAULT: "#fdfaf3",
+        },
       },
     },
   },

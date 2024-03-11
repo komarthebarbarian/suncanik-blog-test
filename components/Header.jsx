@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { getCategories } from "../services";
 import { Search } from "../components";
 import Image from "next/image";
-
 import Link from "next/link";
 
 const categories = [
@@ -16,13 +15,33 @@ const categories = [
 const Header = ({ posts }) => {
   const [categories, setCategories] = useState([]);
   const [navOpen, setNavbarOpen] = useState(false);
+  const [isSticky, setIsSticky] = useState(false);
 
   useEffect(() => {
     getCategories().then((newCategories) => setCategories(newCategories));
+
+    // Event listener for scroll
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      setIsSticky(scrollPosition > 500);
+    };
+
+    // Attach the event listener
+    window.addEventListener("scroll", handleScroll);
+
+    // Clean up the event listener on component unmount
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
+
   return (
-    <div className="relative container mx-auto px-10 mb-8">
-      <div className="flex justify-between items-center border-b w-full inline-block border-gray-400 py-8">
+    <div
+      className={`relative container mx-auto px-10 mb-8 ${
+        isSticky ? "sticky top-0 bg-sticky-color z-50" : ""
+      }`}
+    >
+      <div className="flex justify-between items-center border-b w-full inline-block border-gray-400 uppercase md:py-6 py-4">
         <div className="md:float-left block cursor-pointer">
           <Link href="/" className="flex items-center">
             <Image
