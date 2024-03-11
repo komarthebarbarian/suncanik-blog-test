@@ -2,10 +2,16 @@ import { request, gql } from "graphql-request";
 
 const graphqlAPI = process.env.NEXT_PUBLIC_GRAPHCMS_ENDPOINT;
 
-export const getPosts = async () => {
+export const getPosts = async (page = 1, postsPerPage = 1) => {
+  const skip = (page - 1) * postsPerPage;
+
   const query = gql`
-    query MyQuery {
-      postsConnection {
+    query MyQuery($skip: Int!, $postsPerPage: Int!) {
+      postsConnection(
+        first: $postsPerPage
+        skip: $skip
+        orderBy: createdAt_DESC
+      ) {
         edges {
           cursor
           node {
@@ -34,7 +40,7 @@ export const getPosts = async () => {
     }
   `;
 
-  const result = await request(graphqlAPI, query);
+  const result = await request(graphqlAPI, query, { skip, postsPerPage });
 
   return result.postsConnection.edges;
 };
@@ -51,7 +57,7 @@ export const getCategories = async () => {
     `;
 
     const result = await request(graphqlAPI, query);
-    
+
     // Ensure that result.categories is an array
     const categories = result.categories || [];
 
