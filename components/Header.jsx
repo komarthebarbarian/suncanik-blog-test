@@ -41,7 +41,7 @@ const Header = ({ posts }) => {
         isSticky ? "sticky top-0 bg-sticky-color z-50" : ""
       }`}
     >
-      <div className="flex justify-between items-center border-b w-full inline-block border-gray-400 uppercase md:py-6 py-4">
+      <div className="flex justify-between items-center border-b w-full inline-block border-gray-400 md:py-6 py-4">
         <div className="md:float-left block cursor-pointer">
           <Link href="/" className="flex items-center">
             <Image
@@ -117,13 +117,13 @@ const Header = ({ posts }) => {
                   href={`/category/${category.slug} `}
                   className="mt-6"
                 >
-                  <span className="align-middle text-white antialiased font-semibold cursor-pointer">
+                  <span className="align-middle text-white antialiased font-semibold uppercase cursor-pointer">
                     {category.name}
                   </span>
                 </Link>
               ))}
               <Link key="about" href={`/about`} className="mt-6 mb-4">
-                <span className="align-middle text-white antialiased font-semibold cursor-pointer ">
+                <span className="align-middle text-white antialiased font-semibold uppercase cursor-pointer ">
                   О нама
                 </span>
               </Link>
