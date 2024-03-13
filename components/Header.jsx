@@ -117,13 +117,13 @@ const Header = ({ posts }) => {
                   href={`/category/${category.slug} `}
                   className="mt-6"
                 >
-                  <span className="align-middle text-white antialiased font-semibold uppercase cursor-pointer">
+                  <span className="align-middle text-white antialiased font-semibold cursor-pointer">
                     {category.name}
                   </span>
                 </Link>
               ))}
               <Link key="about" href={`/about`} className="mt-6 mb-4">
-                <span className="align-middle text-white antialiased font-semibold uppercase cursor-pointer ">
+                <span className="align-middle text-white antialiased font-semibold cursor-pointer ">
                   О нама
                 </span>
               </Link>
