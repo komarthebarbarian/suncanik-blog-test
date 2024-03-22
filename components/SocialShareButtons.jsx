@@ -56,7 +56,7 @@ const SocialShareButtons = ({ url, title, excerpt }) => {
         href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(
           url
         )}&text=${encodeURIComponent(
-          title
+          `${title} \n \n ${excerpt}`
         )}&hashtags=Сунчаник,Sunčanik,Suncanik`}
         target="_blank"
         rel="noopener noreferrer"
