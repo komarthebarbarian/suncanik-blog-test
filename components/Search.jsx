@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Fuse from "fuse.js";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 const Search = ({ posts }) => {
   const [expanded, setExpanded] = useState(false);
@@ -46,50 +47,65 @@ const Search = ({ posts }) => {
   };
 
   return (
-    <form name="Search" onSubmit={handleFormSubmit}>
-      <div className="flex items-center justify-center">
-        <input
-          type="text"
-          placeholder="Претражи"
-          value={searchTerm}
-          onChange={handleSearchChange}
-          className={`${
-            expanded ? "w-40 md:w-60 px-2 z-100" : "w-0"
-          } transition-all duration-300 linear outline-gray-100 rounded-full`}
-        />
-        <button
-          type="submit"
-          className="cursor-pointer ml-2"
-          onClick={handleSearchClick}
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="transition duration-300 text-gray-500 hover:text-spring-wood-800 w-6 h-6 "
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
-            />
-          </svg>
-        </button>
-        {searchResults.length > 0 && expanded && (
-          <div className="absolute mt-2 p-2 bg-white rounded-md shadow-md">
-            <ul>
-              {searchResults.map((result) => (
-                <li key={result.item.slug}>
-                  <a href={`/post/${result.item.slug}`}>{result.item.title}</a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
+    <>
+      <div
+        className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 md:hidden ${
+          expanded && "hidden"
+        }`}
+      >
+        <Link href="/">
+          <span className="transition duration-300 text-gray-500 hover:text-spring-wood-800 font-bold uppercase text-xl md:text-3xl antialiased drop-shadow">
+            Сунчаник
+          </span>
+        </Link>
       </div>
-    </form>
+      <form name="Search" onSubmit={handleFormSubmit}>
+        <div className="flex items-center justify-center">
+          <input
+            type="text"
+            placeholder="Претражи"
+            value={searchTerm}
+            onChange={handleSearchChange}
+            className={`${
+              expanded ? "w-40 md:w-60 px-2 z-100" : "w-0"
+            } transition-all duration-300 linear outline-gray-100 rounded-full`}
+          />
+          <button
+            type="submit"
+            className="cursor-pointer ml-2"
+            onClick={handleSearchClick}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="transition duration-300 text-gray-500 hover:text-spring-wood-800 w-6 h-6 "
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+              />
+            </svg>
+          </button>
+          {searchResults.length > 0 && expanded && (
+            <div className="absolute mt-2 p-2 bg-white rounded-md shadow-md">
+              <ul>
+                {searchResults.map((result) => (
+                  <li key={result.item.slug}>
+                    <a href={`/post/${result.item.slug}`}>
+                      {result.item.title}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+      </form>
+    </>
   );
 };
 
