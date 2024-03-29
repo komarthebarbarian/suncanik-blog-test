@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { getCategories } from "../services";
 import { Search } from "../components";
 import Image from "next/image";
@@ -16,6 +16,7 @@ const Header = ({ posts }) => {
   const [categories, setCategories] = useState([]);
   const [navOpen, setNavbarOpen] = useState(false);
   const [isSticky, setIsSticky] = useState(false);
+  const mobileNavRef = useRef(null);
 
   useEffect(() => {
     getCategories().then((newCategories) => setCategories(newCategories));
@@ -32,6 +33,23 @@ const Header = ({ posts }) => {
     // Clean up the event listener on component unmount
     return () => {
       window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        mobileNavRef.current &&
+        !mobileNavRef.current.contains(event.target)
+      ) {
+        setNavbarOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
 
@@ -78,6 +96,7 @@ const Header = ({ posts }) => {
           </div>
           {/* MOBILE NAV */}
           <div
+            ref={mobileNavRef}
             className={`absolute top-0 right-0 w-3/4 bg-spring-wood-800 bg-opacity-90 flex flex-col justify-center items-center md:hidden ${
               navOpen ? "block" : "hidden"
             }`}
